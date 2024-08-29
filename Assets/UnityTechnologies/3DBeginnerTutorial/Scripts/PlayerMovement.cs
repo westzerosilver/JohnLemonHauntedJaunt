@@ -5,18 +5,22 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    
+    public float turnSpeed = 20f;     // 캐릭터 회전 속도
+
     Vector3 m_Movement;         // 이동 벡터 변수: player의 움직임을 결정
     Quaternion m_Rotation = Quaternion.identity;    // 회전을 저장 (이동이 없을 때 회전 값을 주지 않음)
     Animator m_Animator;        // 애니메이터
     Rigidbody m_Rigidbody;
-    public float turnSpeed = 20f;     // 캐릭터 회전 속도 
+    AudioSource m_AudioSource;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,8 +43,18 @@ public class PlayerMovement : MonoBehaviour
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
 
         bool isWalking = hasHorizontalInput || hasVerticalInput;
-
         m_Animator.SetBool("IsWalking", isWalking);
+        if(isWalking)
+        {
+            if (!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play();
+            }
+        }
+        else
+        {
+            m_AudioSource.Stop();
+        }
 
         // 캐릭터 전방 벡터 계산
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
