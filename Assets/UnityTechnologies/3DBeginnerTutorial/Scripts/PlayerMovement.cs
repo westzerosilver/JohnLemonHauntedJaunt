@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     Animator m_Animator;        // 애니메이터
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
+    GameObject m_PlayerName;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
         m_AudioSource = GetComponent<AudioSource>();
+        m_PlayerName = GameObject.Find("NicknameCanvas/JohnLemon");
+
     }
 
     // Update is called once per frame
@@ -60,8 +63,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation(desiredForward);   // 파라미터가 바라보는 방향으로 회전 생성
 
-
-
+        m_PlayerName.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
 
     }
 
