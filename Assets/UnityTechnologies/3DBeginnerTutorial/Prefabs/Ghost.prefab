@@ -76,8 +76,10 @@ GameObject:
   - component: {fileID: 1935544591745713803}
   - component: {fileID: 4102944554119588707}
   - component: {fileID: 8323123059153622684}
-  - component: {fileID: 4818519576360393050}
   - component: {fileID: 4334318580101730795}
+  - component: {fileID: 6423133318957980415}
+  - component: {fileID: 2677252682895990219}
+  - component: {fileID: 8583945484212660071}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -113,7 +115,7 @@ Animator:
   m_GameObject: {fileID: 89316538393467524}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 563ac48ff656d49478fd93213f4c0eb8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c2d68f1a9d744f3aa9558df2be5cf5b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -175,20 +177,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4818519576360393050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89316538393467524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a022c99b574d9425f9c288f6eeb67319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 8323123059153622684}
-  waypoints: []
 --- !u!82 &4334318580101730795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -285,6 +273,57 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6423133318957980415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89316538393467524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5127a20ddea1b4be9aaf027daf46c43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 8323123059153622684}
+  waypoints: []
+  player: {fileID: 0}
+  findDistance: 4
+--- !u!114 &2677252682895990219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89316538393467524}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19d16216f27f4deb85e6dee25963906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 8323123059153622684}
+  waypoints:
+  - {fileID: 0}
+  findDistance: 4
+--- !u!143 &8583945484212660071
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89316538393467524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &89316538393467526
 GameObject:
   m_ObjectHideFlags: 0
