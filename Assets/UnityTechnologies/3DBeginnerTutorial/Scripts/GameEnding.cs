@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;      // 씬을 처리하는 네임스페이스 추가 
+using UnityEngine.SceneManagement;      // 씬을 처리하는 네임스페이스 추가
+using System.Diagnostics;
 
 public class GameEnding : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameEnding : MonoBehaviour
     public AudioSource exitAudio;
     public AudioSource caughtAudio;
 
+
     bool m_isPlayerAtExit;
     bool m_IsPlayerCaught;
     float m_Timer;
@@ -22,7 +24,6 @@ public class GameEnding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -70,12 +71,13 @@ public class GameEnding : MonoBehaviour
         {
             if (doRestart)
             {
-                SceneManager.LoadScene(0);      // 메인 씬(현재 씬)을 다시 로드
+                //SceneManager.LoadScene(0);      // 메인 씬(현재 씬)을 다시 로드
+                GameManager.gameManager.RestartGame();
             }
             else
             {
-                Application.Quit();     // 빌드시에만 작동 
-
+                //Application.Quit();     // 빌드시에만 작동 
+                GameManager.gameManager.GameClear();
             }
         }
     }
